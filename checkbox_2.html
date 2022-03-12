@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(8, 8, 49);
+        width: 100vw;
+        height: 100vh;
+    }
+
+    label {
+        position: relative;
+        width: 300px;
+        height: 150px;
+        border-radius: 75px;
+        box-shadow: 0 0 0 4px #f8c0c0;
+        background-color: azure;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    label input {
+        appearance: none;
+    }
+
+    label span {
+        position: absolute;
+        left: 0;
+        width: 175px;
+        height: 100%;
+        background: url(Coffee_01.png);
+        /* background-color: aqua; */
+        background-repeat: no-repeat;
+        background-size: auto 150px;
+        transition: 1s;
+        transform-origin: 75px;
+        transform: rotate(-180deg);
+
+    }
+
+    label input:checked~span {
+        left: 150px;
+        background: url(Coffee_02.png);
+        background-size: auto 150px;
+        background-repeat: no-repeat;
+        transform: rotate(360deg);
+    }
+
+    label text {
+        position: absolute;
+        left: -120px;
+        font-family: consolas;
+        font-size: 2em;
+        color: #fff;
+        filter: drop-shadow(0 0 15px #fff);
+    }
+
+    label text:last-child {
+        position: absolute;
+        left: initial;
+        right: -100px;
+    }
+    label input:checked ~ text{
+        color: #fff;
+    }
+    label input:checked ~ text:last-child{
+        color: black;
+        filter: none;
+    }
+</style>
+
+<body>
+    <label for="myid">
+        <input type="checkbox" id="myid">
+        <span></span>
+        <text>OFF</text>
+        <text>ON</text>
+    </label>
+</body>
+
+</html>

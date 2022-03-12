@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgb(19, 19, 46);
+    }
+
+    .cube {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        transform-style: preserve-3d;
+        /* transform: rotateY(30deg); */
+        animation: animate 4s linear infinite;
+    }
+    @keyframes animate {
+        0%{
+            transform: rotateX(-90deg) rotateY(0deg); 
+        }
+        100%{
+            transform: rotateX(-100deg) rotateY(360deg);
+
+        }
+    }
+
+    .cube div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+    }
+
+    .span0 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 300px;
+        width: 300px;
+        background: linear-gradient(#151515, #00ec00);
+        transform: rotateY(90deg) translateZ(150px);
+    }
+
+    .span1 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 300px;
+        width: 300px;
+        background: linear-gradient(#151515, #00ecb1);
+        transform: rotateY(180deg) translateZ(150px);
+    }
+       .span2 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 300px;
+        width: 300px;
+        background: linear-gradient(#151515, #ec00c5);
+        transform: rotateY(270deg) translateZ(150px);
+    }
+       .span3 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 300px;
+        width: 300px;
+        background: linear-gradient(#151515, #ec2f00);
+        transform: rotateY(360deg) translateZ(150px);
+    }
+</style>
+
+<body>
+    <div class="cube">
+        <span class="span0"></span>
+        <span class="span1"></span>
+        <span class="span2"></span>
+        <span class="span3"></span>
+    </div>
+</body>
+
+</html>
