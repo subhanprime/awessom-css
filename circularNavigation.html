@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #222237;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .menu {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* background-color: blueviolet; */
+    }
+
+    .menu .toggle {
+        width: 75px;
+        height: 75px;
+        color: #222;
+        border-radius: 50%;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3em;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+
+    .menu .toggle.active {
+        transform: rotate(315deg);
+        box-shadow: 0 0 0 60px #fff,
+            0 0 0 68px #fff;
+        background-color: #222237;
+        color: #fff;
+    }
+
+    .menu li {
+        position: absolute;
+        list-style: none;
+        left: 10px;
+        transform: rotate(calc((360deg/8)* var(--i))) translateX(40px);
+        transform-origin: 140px;
+        visibility: hidden;
+        opacity: 0;
+        transition: 0.6s;
+        z-index: 10;
+
+    }
+
+    .menu.active li {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .menu li p {
+        width: 55px;
+        height: 55px;
+        font-size: 1.7em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 55px;
+        height: 55px;
+        font-size: 1.7em;
+        color: #222237;
+        transform: rotate(calc((360deg/ -8)* var(--i)));
+        /* background-color: rgb(231, 227, 227); */
+        border-radius: 50%;
+
+    }
+
+    .menu.active li.active {
+        transform: rotate(calc(360deg / 8 * var(--i))) translateX(12px);
+    }
+
+    .indicator {
+        position: absolute;
+        transform-origin: right;
+        width: 100px;
+        height: 10px;
+        /* background-color: red; */
+        pointer-events: none;
+        left: 51%;
+        transition: 00.5s;
+    }
+
+    .indicator::before {
+        content: '';
+        position: absolute;
+        width: 55px;
+        height: 55px;
+        background-color: rgb(184, 245, 94);
+        border-radius: 50%;
+        top: -27px;
+        left: 72px;
+        box-shadow: 0 0 0 6px #222237;
+        transition: 0.5s;
+        opacity: 0;
+    }
+    .menu.active .indicator::before{
+        opacity: 1;
+        top: -22px;
+        left: -30px;
+    }
+
+    .menu li:nth-child(2).active~.indicator {
+        transform: translateX(-103px) rotate(360deg);
+    }
+      .menu li:nth-child(3).active~.indicator {
+        transform: translateX(-103px) rotate(45deg);
+    }
+     .menu li:nth-child(4).active~.indicator {
+        transform: translateX(-103px) rotate(90deg);
+    }
+     .menu li:nth-child(5).active~.indicator {
+        transform: translateX(-103px) rotate(135deg);
+    }
+     .menu li:nth-child(6).active~.indicator {
+        transform: translateX(-103px) rotate(180deg);
+    }
+     .menu li:nth-child(7).active~.indicator {
+        transform: translateX(-103px) rotate(225deg);
+    }
+     .menu li:nth-child(8).active~.indicator {
+        transform: translateX(-103px) rotate(270deg);
+    }
+     .menu li:nth-child(9).active~.indicator {
+        transform: translateX(-103px) rotate(315deg);
+    }
+</style>
+
+<body>
+    <ul class="menu">
+        <div class="toggle">
+            <ion-icon name="add-outline"></ion-icon>
+        </div>
+        <li style="--i:0">
+            <p>
+                <ion-icon name="home-outline"></ion-icon>
+            </p>
+        </li>
+        <li style="--i:1">
+            <p>
+                <ion-icon name="duplicate-outline"></ion-icon>
+            </p>
+        </li>
+        <li style="--i:2">
+            <p>
+                <ion-icon name="person-outline"></ion-icon>
+            </p>
+        </li>
+        <li style="--i:3">
+            <p>
+                <ion-icon name="mail-outline"></ion-icon>
+            </p>
+        </li>
+        <li style="--i:4">
+            <p>
+                <ion-icon name="videocam-outline"></ion-icon>
+            </p>
+        </li>
+        <li style="--i:5">
+            <p>
+                <ion-icon name="happy-outline"></ion-icon>
+            </p>
+        </li>
+        <li style="--i:6">
+            <p>
+                <ion-icon name="desktop-outline"></ion-icon>
+            </p>
+        </li>
+        <li style="--i:7">
+            <p>
+                <ion-icon name="flask-outline"></ion-icon>
+            </p>
+        </li>
+        <div class="indicator"></div>
+    </ul>
+</body>
+<script>
+    let menu = document.querySelector('.menu');
+    let menuToggle = document.querySelector('.toggle');
+    menuToggle.addEventListener('click', () => {
+        menu.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+    });
+    let list = document.querySelectorAll('li');
+    console.log(list);
+    function activeLink() {
+        console.log('kk');
+        list.forEach(el => {
+            el.classList.remove('active');
+        })
+        console.log(this);
+        this.classList.add('active')
+    }
+    list.forEach(el => el.addEventListener('click', activeLink));
+</script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<scrip nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></scrip>
+
+</html>
